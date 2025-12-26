@@ -1,0 +1,266 @@
+/**
+ * Mobile-Specific Styles
+ * Safe area support and touch-friendly interactions
+ */
+
+/* Safe Area Support for iOS notches and rounded corners */
+:root {
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+}
+
+/* Apply safe area padding to main layout containers */
+.safe-area-top {
+  padding-top: var(--safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.safe-area-left {
+  padding-left: var(--safe-area-inset-left);
+}
+
+.safe-area-right {
+  padding-right: var(--safe-area-inset-right);
+}
+
+.safe-area-x {
+  padding-left: var(--safe-area-inset-left);
+  padding-right: var(--safe-area-inset-right);
+}
+
+.safe-area-y {
+  padding-top: var(--safe-area-inset-top);
+  padding-bottom: var(--safe-area-inset-bottom);
+}
+
+.safe-area-all {
+  padding-top: var(--safe-area-inset-top);
+  padding-right: var(--safe-area-inset-right);
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-left: var(--safe-area-inset-left);
+}
+
+/* Touch Targets - Minimum 44x44px for accessibility */
+@media (hover: none) and (pointer: coarse) {
+  /* All buttons */
+  button,
+  a.button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Small buttons get extra padding */
+  button[class*="size-sm"],
+  .btn-sm {
+    padding: 12px 16px;
+  }
+
+  /* Icon-only buttons */
+  button:has(> svg:only-child),
+  button[aria-label]:has(> svg:only-child) {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px;
+  }
+
+  /* Input fields */
+  input,
+  textarea,
+  select {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  /* Checkbox and radio */
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+  /* Links in text */
+  a {
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Card click targets */
+  .card[role="button"],
+  .card[tabindex="0"] {
+    min-height: 64px;
+  }
+}
+
+/* Improve tap highlighting */
+@media (hover: none) {
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+
+  button:active,
+  a:active,
+  [role="button"]:active {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Prevent text selection on buttons and interactive elements */
+button,
+[role="button"],
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Smooth scrolling on iOS */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix iOS input zoom */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Better mobile viewport */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific fixes */
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  .full-height {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Landscape mode optimizations */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* Reduce header height in landscape */
+  header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Smaller navigation */
+  nav {
+    font-size: 0.875rem;
+  }
+}
+
+/* PWA-specific styles */
+@media all and (display-mode: standalone) {
+  /* App is installed as PWA */
+  .pwa-only {
+    display: block;
+  }
+
+  .browser-only {
+    display: none;
+  }
+
+  /* Extra padding for status bar */
+  body {
+    padding-top: var(--safe-area-inset-top);
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharper borders */
+  .border {
+    border-width: 0.5px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode specific mobile fixes */
+@media (prefers-color-scheme: dark) {
+  /* Better contrast on mobile OLED screens */
+  .card {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Utility classes for mobile development */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+  }
+}
+
+/* Sticky footer that respects safe area */
+.sticky-footer {
+  position: sticky;
+  bottom: 0;
+  padding-bottom: calc(1rem + var(--safe-area-inset-bottom));
+}
+
+/* Better spacing for mobile */
+@media (max-width: 768px) {
+  .container {
+    padding-left: max(1rem, var(--safe-area-inset-left));
+    padding-right: max(1rem, var(--safe-area-inset-right));
+  }
+
+  /* Reduce gap in grid layouts */
+  .grid {
+    gap: 0.75rem;
+  }
+
+  /* Smaller headings on mobile */
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

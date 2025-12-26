@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /b /s \"c:\\\\Users\\\\alija\\\\OneDrive\\\\Documents\\\\GitHub\\\\spark-business-buddy-main\\\\supabase\")",
+      "Bash(findstr:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sparkbusinessbuddy.ca/sitemap.xml
+
+# Block specific paths (if any)
+# Disallow: /api/
+# Disallow: /admin/

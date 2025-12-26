@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-specific styles */
+@import './styles/mobile.css';
+
+/* FastTrack.Business Design System
+   All colors are HSL values.
+*/
+
+@layer base {
+  :root {
+    /* FastTrack.Business Brand Colors */
+    --background: 40 33% 98%; /* Warm White #FAF9F6 */
+    --foreground: 213 51% 24%; /* Deep Navy */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 213 51% 24%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 51% 24%;
+    
+    --primary: 213 51% 24%; /* Deep Navy Blue #1E3A5F */
+    --primary-foreground: 40 33% 98%;
+    
+    --secondary: 215 16% 47%; /* Slate Gray #64748B */
+    --secondary-foreground: 40 33% 98%;
+    
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 4 74% 50%; /* Maple Red #D52B1E */
+    --accent-foreground: 40 33% 98%;
+    
+    --destructive: 4 74% 50%;
+    --destructive-foreground: 40 33% 98%;
+    
+    --success: 123 38% 33%; /* Forest Green #2E7D32 */
+    --success-foreground: 40 33% 98%;
+    
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 213 51% 24%;
+    
+    --radius: 0.75rem;
+    
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 213 51% 24%;
+    --sidebar-primary: 213 51% 24%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 213 51% 24%;
+    --sidebar-border: 214 20% 88%;
+    --sidebar-ring: 213 51% 24%;
+  }
+
+  .dark {
+    --background: 213 51% 12%;
+    --foreground: 40 33% 98%;
+    
+    --card: 213 51% 16%;
+    --card-foreground: 40 33% 98%;
+    
+    --popover: 213 51% 16%;
+    --popover-foreground: 40 33% 98%;
+    
+    --primary: 40 33% 98%;
+    --primary-foreground: 213 51% 24%;
+    
+    --secondary: 215 16% 60%;
+    --secondary-foreground: 213 51% 12%;
+    
+    --muted: 213 51% 20%;
+    --muted-foreground: 215 16% 60%;
+    
+    --accent: 4 74% 55%;
+    --accent-foreground: 40 33% 98%;
+    
+    --destructive: 4 74% 55%;
+    --destructive-foreground: 40 33% 98%;
+    
+    --success: 123 38% 40%;
+    --success-foreground: 40 33% 98%;
+    
+    --border: 213 51% 25%;
+    --input: 213 51% 25%;
+    --ring: 40 33% 98%;
+    
+    --sidebar-background: 213 51% 14%;
+    --sidebar-foreground: 40 33% 98%;
+    --sidebar-primary: 40 33% 98%;
+    --sidebar-primary-foreground: 213 51% 24%;
+    --sidebar-accent: 213 51% 20%;
+    --sidebar-accent-foreground: 40 33% 98%;
+    --sidebar-border: 213 51% 25%;
+    --sidebar-ring: 40 33% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Safe area insets for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer utilities {
+  /* Touch target minimum size */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Message animations */
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-in {
+  animation: message-in 0.3s ease-out;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-message-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

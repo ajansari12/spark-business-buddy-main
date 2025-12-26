@@ -1,0 +1,85 @@
+project_id = "fknnipnaesrvqthfdppr"
+
+[functions.ft_fetch_provincial_trends]
+verify_jwt = true
+
+[functions.ft_chat]
+verify_jwt = true
+
+[functions.ft_generate_ideas]
+verify_jwt = true
+
+[functions.ft_generate_pdf]
+verify_jwt = true
+
+[functions.generate_ideas]
+verify_jwt = false
+
+[functions.ft_delete_account]
+verify_jwt = true
+
+[functions.ft_search_competitors]
+verify_jwt = false
+
+[functions.ft_verify_grants]
+verify_jwt = true
+
+[functions.ft_market_validation]
+verify_jwt = false
+
+[functions.ft_backfill_market_signals]
+verify_jwt = true
+
+[functions.ft_regenerate_ideas]
+verify_jwt = true
+
+[functions.ft_generate_registration_path]
+verify_jwt = true
+
+[functions.ft_registration_copilot]
+verify_jwt = true
+
+[functions.ft_batch_verify_fees]
+verify_jwt = true
+
+[functions.ft_generate_business_names]
+verify_jwt = true
+
+[functions.ft_generate_grant_kit]
+verify_jwt = true
+
+[functions.ft_trending_businesses]
+verify_jwt = true
+
+[functions.ft_idea_chat]
+verify_jwt = true
+
+[functions.ft_create_checkout]
+verify_jwt = true
+
+[functions.ft_stripe_webhook]
+verify_jwt = false
+
+[functions.ft_verify_payment]
+verify_jwt = true
+
+[functions.ft_send_email]
+verify_jwt = true
+
+[functions.ft_abandoned_session_check]
+verify_jwt = false
+
+[functions.ft_generate_pitch]
+verify_jwt = true
+
+[functions.ft_generate_social_posts]
+verify_jwt = true
+
+[functions.ft_generate_email_sequence]
+verify_jwt = true
+
+[functions.ft_customer_portal]
+verify_jwt = true
+
+[functions.ft_send_referral_invite]
+verify_jwt = true

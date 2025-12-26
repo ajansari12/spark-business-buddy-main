@@ -1,0 +1,38 @@
+{
+  "name": "FastTrack Business",
+  "short_name": "FastTrack",
+  "description": "AI-powered business ideas for Canadian entrepreneurs",
+  "start_url": "/app/dashboard",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#1E3A5F",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en-CA"
+}

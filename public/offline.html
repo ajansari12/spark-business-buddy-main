@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline - FastTrack.Business</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: #FAF9F6;
+      color: #1E3A5F;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+    }
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      color: #64748B;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    button, .link-button {
+      background: #1E3A5F;
+      color: #FAF9F6;
+      border: none;
+      padding: 0.875rem 1.5rem;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    button:active, .link-button:active {
+      opacity: 0.9;
+    }
+    .cached-content {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      display: none;
+    }
+    .cached-content.show {
+      display: block;
+    }
+    .cached-content p {
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+    .link-button.secondary {
+      background: transparent;
+      color: #1E3A5F;
+      border: 2px solid #1E3A5F;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📡</div>
+    <h1>You're Offline</h1>
+    <p>It looks like you've lost your internet connection. Please check your connection and try again.</p>
+    <button onclick="window.location.reload()">Try Again</button>
+    
+    <div id="cached-content" class="cached-content">
+      <p>You can still view your saved ideas:</p>
+      <a href="/app/ideas" class="link-button secondary">View Saved Ideas →</a>
+    </div>
+  </div>
+
+  <script>
+    // Check if user has cached ideas in IndexedDB
+    if ('indexedDB' in window) {
+      const request = indexedDB.open('fasttrack-offline', 1);
+      request.onsuccess = function() {
+        const db = request.result;
+        if (db.objectStoreNames.contains('ideas')) {
+          const tx = db.transaction('ideas', 'readonly');
+          const store = tx.objectStore('ideas');
+          const countReq = store.count();
+          countReq.onsuccess = function() {
+            if (countReq.result > 0) {
+              document.getElementById('cached-content').classList.add('show');
+            }
+          };
+        }
+      };
+    }
+  </script>
+</body>
+</html>
