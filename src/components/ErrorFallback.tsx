@@ -2,7 +2,6 @@ import { ErrorInfo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertTriangle, Home, RefreshCw } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 interface ErrorFallbackProps {
   error: Error | null;
@@ -10,16 +9,10 @@ interface ErrorFallbackProps {
   onReset?: () => void;
 }
 
-/**
- * Error Fallback UI Component
- * Displays a user-friendly error message with recovery options
- */
 export const ErrorFallback = ({ error, errorInfo, onReset }: ErrorFallbackProps) => {
-  const navigate = useNavigate();
-
   const handleGoHome = () => {
     if (onReset) onReset();
-    navigate('/');
+    window.location.href = '/';
   };
 
   const handleRefresh = () => {
