@@ -65,8 +65,8 @@ const App = () => (
                 <TooltipProvider>
                   <Toaster />
                   <Sonner />
-                  <KeyboardShortcuts />
                   <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                    <KeyboardShortcuts />
                     <Suspense fallback={<LoadingFallback />}>
                       <Routes>
                         {/* Public routes with PublicLayout */}
